@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FloodVoice — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1A6B7C;
+    --teal-light: #2A8FA4;
+    --teal-pale: #E8F4F7;
+    --terracotta: #C4622D;
+    --terracotta-pale: #F9EDE6;
+    --amber: #E8A030;
+    --amber-pale: #FDF3E0;
+    --offwhite: #F7F4EF;
+    --slate: #3D4F58;
+    --slate-light: #6B7F8A;
+    --slate-pale: #EDF0F2;
+    --white: #FFFFFF;
+
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Noto Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--offwhite);
+    color: var(--slate);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--slate);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 3rem;
+    height: 52px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-ripple {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nav-wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--offwhite);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--slate-light);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--offwhite); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+
+  section {
+    padding: 5rem 0;
+    border-bottom: 1px solid rgba(61,79,88,0.1);
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--slate);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--slate-light);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--slate);
+    padding: 7rem 3rem;
+    border-bottom: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--offwhite);
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title span { color: var(--teal-light); }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--slate-light);
+    line-height: 1.75;
+    max-width: 420px;
+  }
+
+  .hero-logo-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--offwhite);
+    border-radius: 16px;
+    padding: 4rem;
+    gap: 3rem;
+  }
+
+  .logo-mark {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .logo-text-flood {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--slate);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .logo-text-voice {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--slate);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .logo-ripple-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 1px;
+  }
+
+  /* COLOR SYSTEM */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .color-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .color-swatch {
+    height: 100px;
+    width: 100%;
+  }
+
+  .color-info {
+    background: var(--white);
+    padding: 1rem;
+  }
+
+  .color-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--slate);
+    margin-bottom: 2px;
+  }
+
+  .color-hex {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--slate-light);
+  }
+
+  .color-role {
+    font-size: 11px;
+    color: var(--slate-light);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* PHASE SYSTEM */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .phase-card {
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card.prep { background: var(--terracotta-pale); border: 2px solid var(--terracotta); }
+  .phase-card.active { background: var(--teal-pale); border: 2px solid var(--teal); }
+  .phase-card.recovery { background: var(--terracotta-pale); border: 2px solid rgba(196,98,45,0.4); }
+
+  .phase-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .phase-card.prep .phase-label { color: var(--terracotta); }
+  .phase-card.active .phase-label { color: var(--teal); }
+  .phase-card.recovery .phase-label { color: var(--terracotta); }
+
+  .phase-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .phase-card.prep .phase-name { color: var(--terracotta); }
+  .phase-card.active .phase-name { color: var(--teal); }
+  .phase-card.recovery .phase-name { color: var(--slate); }
+
+  .phase-dots {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  .phase-dot {
+    height: 12px;
+    border-radius: 6px;
+    transition: width 0.3s;
+  }
+
+  .phase-dot.primary { width: 40px; }
+  .phase-dot.secondary { width: 20px; opacity: 0.5; }
+
+  .phase-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  .phase-tone {
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--slate-light);
+    font-style: italic;
+  }
+
+  /* TYPOGRAPHY */
+  .type-specimens {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .type-specimen {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .type-meta { padding-top: 4px; }
+
+  .type-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+
+  .type-face-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--slate);
+    margin-bottom: 4px;
+  }
+
+  .type-use {
+    font-size: 12px;
+    color: var(--slate-light);
+    line-height: 1.5;
+  }
+
+  .type-sample-display {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--slate);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .type-sample-body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--slate);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  .type-sample-mono {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--teal);
+    line-height: 1.6;
+  }
+
+  .type-scale {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .type-scale-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--slate-pale);
+  }
+
+  .scale-row:last-child { border-bottom: none; }
+
+  .scale-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--slate-light);
+    min-width: 60px;
+  }
+
+  /* ICONS */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1rem;
+  }
+
+  .icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .icon-item:hover {
+    background: var(--teal-pale);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26,107,124,0.12);
+  }
+
+  .icon-name {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--slate-light);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  /* COMPONENTS */
+  .component-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .component-panel {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .component-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate-light);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Buttons */
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-primary { background: var(--teal); color: var(--offwhite); }
+  .btn-primary:hover { background: var(--teal-light); }
+
+  .btn-secondary { background: var(--terracotta); color: var(--offwhite); }
+  .btn-secondary:hover { opacity: 0.88; }
+
+  .btn-ghost { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
+  .btn-ghost:hover { background: var(--teal-pale); }
+
+  .btn-alert { background: var(--amber); color: var(--slate); }
+  .btn-alert:hover { opacity: 0.88; }
+
+  /* Alerts */
+  .alert {
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .alert-active {
+    background: var(--teal-pale);
+    border-left: 4px solid var(--teal);
+  }
+
+  .alert-warning {
+    background: var(--amber-pale);
+    border-left: 4px solid var(--amber);
+  }
+
+  .alert-recovery {
+    background: var(--terracotta-pale);
+    border-left: 4px solid var(--terracotta);
+  }
+
+  .alert-icon { flex-shrink: 0; margin-top: 1px; }
+
+  .alert-title {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .alert-active .alert-title { color: var(--teal); }
+  .alert-warning .alert-title { color: #8B5E0A; }
+  .alert-recovery .alert-title { color: var(--terracotta); }
+
+  .alert-body {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--slate);
+  }
+
+  /* Check-in Card */
+  .checkin-card {
+    background: var(--slate);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: var(--offwhite);
+  }
+
+  .checkin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .checkin-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--offwhite);
+  }
+
+  .checkin-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: var(--teal);
+    color: var(--offwhite);
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
+
+  .checkin-neighbors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .neighbor-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+  }
+
+  .neighbor-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--offwhite);
+  }
+
+  .neighbor-loc {
+    font-size: 11px;
+    color: var(--slate-light);
+  }
+
+  .neighbor-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+
+  .status-safe { background: rgba(26,107,124,0.3); color: #7FCFDE; }
+  .status-check { background: rgba(232,160,48,0.3); color: #F0C06B; }
+
+  /* Flood data widget */
+  .flood-widget {
+    background: var(--slate);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+  }
+
+  .flood-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .flood-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+  }
+
+  .flood-live {
+    font-size: 10px;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .flood-stat {
+    margin-bottom: 1rem;
+  }
+
+  .flood-stat-label {
+    font-size: 10px;
+    color: var(--slate-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+
+  .flood-stat-value {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--offwhite);
+    line-height: 1;
+  }
+
+  .flood-stat-value span {
+    font-size: 12px;
+    color: var(--slate-light);
+    margin-left: 4px;
+  }
+
+  .flood-bar-track {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+
+  .flood-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--amber) 100%);
+    width: 62%;
+  }
+
+  .flood-zones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .zone-item { text-align: center; }
+
+  .zone-letter {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .zone-item:nth-child(1) .zone-letter { color: var(--amber); }
+  .zone-item:nth-child(2) .zone-letter { color: var(--teal-light); }
+  .zone-item:nth-child(3) .zone-letter { color: #7FCFDE; }
+
+  .zone-status {
+    font-size: 9px;
+    color: var(--slate-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* DO / DON'T */
+  .donts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .do-col, .dont-col { display: flex; flex-direction: column; gap: 1rem; }
+
+  .do-label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.25rem;
+  }
+
+  .dont-label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: #B04040;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.25rem;
+  }
+
+  .do-item {
+    background: var(--teal-pale);
+    border: 1px solid rgba(26,107,124,0.2);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  .dont-item {
+    background: #FDF0F0;
+    border: 1px solid rgba(176,64,64,0.2);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+    text-decoration-color: transparent;
+  }
+
+  .do-item strong, .dont-item strong {
+    display: block;
+    margin-bottom: 2px;
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .do-item strong { color: var(--teal); }
+  .dont-item strong { color: #B04040; }
+
+  /* FOOTER */
+  footer {
+    background: var(--slate);
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--slate-light);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-text span { color: var(--teal-light); }
+
+  /* RIPPLE SVG */
+  .ripple-teal { fill: none; stroke: var(--teal); }
+  .ripple-center { fill: var(--teal); }
+
+  /* Accessibility badge */
+  .a11y-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .a11y-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .a11y-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: var(--teal-pale);
+  }
+
+  .a11y-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--slate);
+    margin-bottom: 0.4rem;
+  }
+
+  .a11y-desc {
+    font-size: 12px;
+    color: var(--slate-light);
+    line-height: 1.6;
+  }
+
+  .contrast-demo {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .contrast-chip {
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* Divider */
+  .divider { height: 1px; background: rgba(61,79,88,0.1); margin: 2rem 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="Floodvoice-white.png" alt="FloodVoice" style="height:36px;width:auto;object-fit:contain;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#icons">Icons</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#a11y">Accessibility</a></li>
+    <li><a href="#donts">Do & Don't</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">v1.0 — Design System</div>
+      <h1 class="hero-title">The trusted neighbor who knows <span>everything.</span></h1>
+      <p class="hero-desc">A visual identity system for FloodVoice — credible enough for crisis moments, human enough for everyday community engagement. Co-built with Red Hook and Rockaway in mind.</p>
+    </div>
+    <div class="hero-logo-display">
+      <!-- Actual logo -->
+      <img
+        src="Floodvoice-color.png"
+        alt="FloodVoice Logo"
+        style="width:100%;max-width:320px;height:auto;object-fit:contain;border-radius:8px;"
+      >
+      <div style="display:flex;gap:8px;">
+        <span style="font-family:var(--font-mono);font-size:11px;color:var(--slate-light);">Plus Jakarta Sans · Noto Sans · IBM Plex Mono</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLORS -->
+<section id="colors">
+  <div class="container">
+    <div class="section-label">01 — Color</div>
+    <h2 class="section-title">Brand Palette</h2>
+    <p class="section-desc">Five colors. None of them government blue. None of them emergency red. Each one chosen for trust, warmth, and cultural resonance with the communities FloodVoice serves.</p>
+
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#1A6B7C;"></div>
+        <div class="color-info">
+          <div class="color-name">Deep Teal</div>
+          <div class="color-hex">#1A6B7C</div>
+          <div class="color-role">Primary — water-adjacent trust signal</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#C4622D;"></div>
+        <div class="color-info">
+          <div class="color-name">Terracotta</div>
+          <div class="color-hex">#C4622D</div>
+          <div class="color-role">Secondary — community, belonging</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#E8A030;"></div>
+        <div class="color-info">
+          <div class="color-name">Amber Gold</div>
+          <div class="color-hex">#E8A030</div>
+          <div class="color-role">Alert — attention without fear</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#F7F4EF;border:1px solid rgba(61,79,88,0.1);"></div>
+        <div class="color-info">
+          <div class="color-name">Warm Off-White</div>
+          <div class="color-hex">#F7F4EF</div>
+          <div class="color-role">Background — not clinical white</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#3D4F58;"></div>
+        <div class="color-info">
+          <div class="color-name">Slate</div>
+          <div class="color-hex">#3D4F58</div>
+          <div class="color-role">Text — not authoritarian black</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase system -->
+    <div class="section-label" style="margin-bottom:0.5rem;">Phase Color System</div>
+    <p class="section-desc" style="margin-bottom:1.5rem;">Same palette, shifted weight. FloodVoice never changes its colors between phases — it changes which color leads.</p>
+
+    <div class="phase-grid">
+      <div class="phase-card prep">
+        <div class="phase-label">Phase 01</div>
+        <div class="phase-name">Preparedness</div>
+        <div class="phase-dots">
+          <div class="phase-dot primary" style="background:var(--terracotta);"></div>
+          <div class="phase-dot secondary" style="background:var(--teal);"></div>
+        </div>
+        <div class="phase-desc">Terracotta leads. Community-feeling, warm, exploratory. Builds trust capital before the crisis.</div>
+        <div class="phase-tone">"Ready, together, your neighborhood, your plan."</div>
+      </div>
+      <div class="phase-card active">
+        <div class="phase-label">Phase 02</div>
+        <div class="phase-name">Active Flooding</div>
+        <div class="phase-dots">
+          <div class="phase-dot primary" style="background:var(--teal);"></div>
+          <div class="phase-dot secondary" style="background:var(--amber);"></div>
+        </div>
+        <div class="phase-desc">Teal leads. Calm authority. Amber-gold for alerts — never red. Maximum clarity, minimum friction.</div>
+        <div class="phase-tone">"Now, here, safe, confirmed, your zone."</div>
+      </div>
+      <div class="phase-card recovery">
+        <div class="phase-label">Phase 03</div>
+        <div class="phase-name">Recovery</div>
+        <div class="phase-dots">
+          <div class="phase-dot primary" style="background:var(--terracotta);"></div>
+          <div class="phase-dot secondary" style="background:var(--teal); opacity:0.6;"></div>
+        </div>
+        <div class="phase-desc">Terracotta returns. Warm, grounded, forward-looking. Where FloodVoice differentiates most from government tools.</div>
+        <div class="phase-tone">"Coming back, here for you, together."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="type">
+  <div class="container">
+    <div class="section-label">02 — Typography</div>
+    <h2 class="section-title">Type System</h2>
+    <p class="section-desc">Three typefaces, three registers. Display for warmth and authority. Body for multilingual reach. Mono for technical data — flood levels, zone statuses, timestamps.</p>
+
+    <div class="type-specimens">
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-role">Display / Heading</div>
+          <div class="type-face-name">Plus Jakarta Sans</div>
+          <div class="type-use">Bold & Semibold · Headlines, UI labels, CTA buttons, section headers</div>
+        </div>
+        <div class="type-sample-display">Your neighborhood.<br>Your plan.</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-role">Body / Functional</div>
+          <div class="type-face-name">Noto Sans</div>
+          <div class="type-use">Medium · Body copy, instructions, multilingual content — Arabic, Bengali, Korean, Chinese, Urdu</div>
+        </div>
+        <div class="type-sample-body">FloodVoice was built for the communities who live closest to the water — and who have been left out of emergency tools that were never designed with them in mind.</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-role">Data / Alert</div>
+          <div class="type-face-name">IBM Plex Mono</div>
+          <div class="type-use">Regular & Medium · Water levels, evacuation zone status, timestamps, sensor readouts</div>
+        </div>
+        <div class="type-sample-mono">
+          WATER LEVEL: 2.4 ft above baseline<br>
+          ZONE: Red Hook — EVACUATE NOW<br>
+          UPDATED: 14:32 EDT · Apr 20 2026
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale">
+      <div class="type-scale-title">Display Type Scale — Plus Jakarta Sans</div>
+      <div class="scale-row">
+        <span class="scale-label">96 / 800</span>
+        <span style="font-family:var(--font-display);font-size:3.5rem;font-weight:800;color:var(--slate);letter-spacing:-0.04em;line-height:1;">FloodVoice</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">48 / 700</span>
+        <span style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--slate);letter-spacing:-0.03em;">Your neighborhood. Your plan.</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">24 / 600</span>
+        <span style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--slate);">Shelter available at P.S. 15, Red Hook</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">16 / 500</span>
+        <span style="font-family:var(--font-display);font-size:1rem;font-weight:500;color:var(--slate);">Check on your neighbors · Share your location · Request help</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">12 / 500</span>
+        <span style="font-family:var(--font-mono);font-size:0.75rem;font-weight:500;color:var(--teal);letter-spacing:0.1em;text-transform:uppercase;">ZONE A · ACTIVE ALERT · UPDATED 14:32</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ICONS -->
+<section id="icons">
+  <div class="container">
+    <div class="section-label">03 — Iconography</div>
+    <h2 class="section-title">Icon System</h2>
+    <p class="section-desc">8 core icons. Every icon paired with a text label — never icon-only. Clear-line for digital UI; filled for print and low-resolution contexts.</p>
+
+    <div class="icon-grid">
+      <!-- Safe Zone -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="12" stroke="#1A6B7C" stroke-width="2"/>
+          <path d="M11 16.5l3.5 3.5 6.5-7" stroke="#1A6B7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="icon-name">Safe Zone</span>
+      </div>
+      <!-- Shelter -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 16L16 6l11 10" stroke="#1A6B7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="10" y="16" width="12" height="10" rx="1" stroke="#1A6B7C" stroke-width="2"/>
+          <rect x="14" y="20" width="4" height="6" rx="0.5" stroke="#1A6B7C" stroke-width="1.5"/>
+        </svg>
+        <span class="icon-name">Shelter</span>
+      </div>
+      <!-- Flood Warning -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 22c2-2 4 0 6-2s4-4 6-2 3 2 4 2" stroke="#E8A030" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 18c2-2 4 0 6-2s4-4 6-2 3 2 4 2" stroke="#E8A030" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 8v6M14 6h4" stroke="#1A6B7C" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-name">Flood Alert</span>
+      </div>
+      <!-- Water Level -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="6" width="5" height="20" rx="2" stroke="#1A6B7C" stroke-width="2"/>
+          <rect x="8" y="16" width="5" height="10" rx="2" fill="#1A6B7C" opacity="0.3"/>
+          <path d="M16 16h8M16 20h6M16 12h5" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-name">Water Level</span>
+      </div>
+      <!-- Help Request -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="11" stroke="#C4622D" stroke-width="2"/>
+          <path d="M16 11v5M16 21v1" stroke="#C4622D" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="icon-name">Help</span>
+      </div>
+      <!-- Resources -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="14" width="8" height="12" rx="1.5" stroke="#1A6B7C" stroke-width="2"/>
+          <rect x="17" y="10" width="8" height="16" rx="1.5" stroke="#1A6B7C" stroke-width="2"/>
+          <path d="M7 10h8M17 6h8" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+        <span class="icon-name">Resources</span>
+      </div>
+      <!-- Neighbor Check-in -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="11" r="4" stroke="#1A6B7C" stroke-width="2"/>
+          <path d="M6 25c0-4 2.7-7 6-7" stroke="#1A6B7C" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="22" cy="19" r="5" stroke="#C4622D" stroke-width="2"/>
+          <path d="M20 19l1.5 1.5L24 17" stroke="#C4622D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="icon-name">Check-In</span>
+      </div>
+      <!-- Recovery -->
+      <div class="icon-item">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 22c1.5-3 3.5-5 6-5s4.5 2 6 5" stroke="#C4622D" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 17V9" stroke="#1A6B7C" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 12l3-4 3 4" stroke="#1A6B7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="icon-name">Recovery</span>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--white);border-radius:10px;display:flex;gap:2rem;align-items:center;">
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--slate-light);letter-spacing:0.06em;">NEVER USE →</span>
+      <span style="font-size:13px;color:var(--slate);">🛡️ Shields &nbsp;·&nbsp; ⚠️ Warning triangles &nbsp;·&nbsp; 💧 Flat blue water drops &nbsp;·&nbsp; 🚨 Sirens &nbsp;·&nbsp; ☑ Checklist icons</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section id="components">
+  <div class="container">
+    <div class="section-label">04 — Components</div>
+    <h2 class="section-title">UI Components</h2>
+    <p class="section-desc">Buttons, alerts, and data widgets — each showing how the phase color system applies to real interface moments.</p>
+
+    <div class="component-grid">
+      <!-- Buttons -->
+      <div class="component-panel">
+        <div class="component-label">Buttons</div>
+        <div class="btn-row">
+          <button class="btn btn-primary">Mark Safe</button>
+          <button class="btn btn-secondary">Find Shelter</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-ghost">Check Neighbors</button>
+          <button class="btn btn-alert">⚠ Active Alert</button>
+        </div>
+        <div class="divider"></div>
+        <div class="component-label">Alert States</div>
+        <div class="alert alert-warning">
+          <svg class="alert-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="#E8A030" stroke-width="1.5"/>
+            <path d="M8 5v4M8 11v.5" stroke="#E8A030" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="alert-title">Flood Watch — Red Hook</div>
+            <div class="alert-body">Water levels rising at Gowanus Canal. Prepare to evacuate Zone A. Updated 14:32.</div>
+          </div>
+        </div>
+        <div class="alert alert-active">
+          <svg class="alert-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="2.5" fill="#1A6B7C"/>
+            <circle cx="8" cy="8" r="5.5" stroke="#1A6B7C" stroke-width="1" opacity="0.6"/>
+            <circle cx="8" cy="8" r="7.5" stroke="#1A6B7C" stroke-width="0.75" opacity="0.3"/>
+          </svg>
+          <div>
+            <div class="alert-title">Shelter Open — P.S. 15 Red Hook</div>
+            <div class="alert-body">350 Atlantic Ave. Pet-friendly. Capacity: 120. Open now.</div>
+          </div>
+        </div>
+        <div class="alert alert-recovery">
+          <svg class="alert-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 12V5" stroke="#C4622D" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 7l2-3 2 3" stroke="#C4622D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 12c.8-1.5 1.7-2.5 3-2.5s2.2 1 3 2.5" stroke="#C4622D" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="alert-title">Recovery Update — Your Block</div>
+            <div class="alert-body">Power restored on Columbia St. Mutual Aid NYC distributing supplies at RHI, 767 Hicks St.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <!-- Flood Data Widget -->
+        <div class="component-panel" style="padding:0;">
+          <div class="flood-widget">
+            <div class="flood-header">
+              <span class="flood-title">Gowanus Canal — Live Data</span>
+              <span class="flood-live"><span class="live-dot"></span> LIVE</span>
+            </div>
+            <div class="flood-stat">
+              <div class="flood-stat-label">WATER LEVEL</div>
+              <div class="flood-stat-value">2.4 <span>ft above baseline</span></div>
+              <div class="flood-bar-track"><div class="flood-bar-fill"></div></div>
+            </div>
+            <div class="flood-zones">
+              <div class="zone-item">
+                <div class="zone-letter">A</div>
+                <div class="zone-status">Evacuate</div>
+              </div>
+              <div class="zone-item">
+                <div class="zone-letter">B</div>
+                <div class="zone-status">Prepare</div>
+              </div>
+              <div class="zone-item">
+                <div class="zone-letter">C</div>
+                <div class="zone-status">Monitor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Neighbor Check-in Widget -->
+        <div class="component-panel" style="padding:0;">
+          <div class="checkin-card">
+            <div class="checkin-header">
+              <span class="checkin-title">Your Block — Columbia St</span>
+              <span class="checkin-badge">3 neighbors</span>
+            </div>
+            <div class="checkin-neighbors">
+              <div class="neighbor-row">
+                <div>
+                  <div class="neighbor-name">Maria R.</div>
+                  <div class="neighbor-loc">Apt 2B · Red Hook Houses</div>
+                </div>
+                <span class="neighbor-status status-safe">Safe</span>
+              </div>
+              <div class="neighbor-row">
+                <div>
+                  <div class="neighbor-name">James T.</div>
+                  <div class="neighbor-loc">Apt 4A · Red Hook Houses</div>
+                </div>
+                <span class="neighbor-status status-check">Check in</span>
+              </div>
+              <div class="neighbor-row">
+                <div>
+                  <div class="neighbor-name">Sun-Yi K.</div>
+                  <div class="neighbor-loc">Apt 1C · Red Hook Houses</div>
+                </div>
+                <span class="neighbor-status status-safe">Safe</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSIBILITY -->
+<section id="a11y">
+  <div class="container">
+    <div class="section-label">05 — Accessibility</div>
+    <h2 class="section-title">Accessibility as Brand</h2>
+    <p class="section-desc">Accessibility isn't compliance. It's the single most powerful trust signal for communities with historical reasons to be skeptical of government-adjacent tools.</p>
+
+    <div class="a11y-grid">
+      <div class="a11y-card">
+        <div class="a11y-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="8" stroke="#1A6B7C" stroke-width="1.5"/>
+            <path d="M7 10h6M10 7v6" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="a11y-title">Language First</div>
+        <div class="a11y-desc">Language selection at onboarding — no English default assumption. Spanish, Haitian Creole, Bengali, Chinese, Arabic, French, Korean, Russian as initial priorities.</div>
+      </div>
+      <div class="a11y-card">
+        <div class="a11y-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="6" width="7" height="8" rx="1.5" stroke="#1A6B7C" stroke-width="1.5"/>
+            <path d="M13 8h4M13 12h3" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="a11y-title">Icon + Text Always</div>
+        <div class="a11y-desc">No icon-only navigation. Every interactive element carries both a visual and a text label — for low-literacy, non-English-speaking, and screen-reader users.</div>
+      </div>
+      <div class="a11y-card">
+        <div class="a11y-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="3" width="14" height="14" rx="3" stroke="#1A6B7C" stroke-width="1.5"/>
+            <circle cx="10" cy="10" r="3" fill="#1A6B7C" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="a11y-title">48px Touch Targets</div>
+        <div class="a11y-desc">Minimum 48px touch targets across the entire interface by default — not in an "accessibility mode." Elderly users are primary users, not edge cases.</div>
+      </div>
+      <div class="a11y-card">
+        <div class="a11y-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 14l4-4 3 3 5-6" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="a11y-title">4.5:1 Contrast</div>
+        <div class="a11y-desc">Teal on warm off-white passes WCAG AA while remaining warm. Contrast and warmth are not in conflict when the palette is designed with both requirements.</div>
+        <div class="contrast-demo">
+          <div class="contrast-chip" style="background:var(--teal);color:var(--offwhite);">Aa 5.2:1</div>
+          <div class="contrast-chip" style="background:var(--offwhite);color:var(--slate);border:1px solid rgba(61,79,88,0.15);">Aa 7.1:1</div>
+        </div>
+      </div>
+      <div class="a11y-card">
+        <div class="a11y-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="3" y="8" width="5" height="9" rx="1" stroke="#1A6B7C" stroke-width="1.5"/>
+            <rect x="10" y="4" width="7" height="13" rx="1" stroke="#1A6B7C" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="a11y-title">Multi-Modal Alerts</div>
+        <div class="a11y-desc">Active flooding triggers push + SMS + audio + vibration by default — not behind an accessibility setting. A resident without glasses benefits too.</div>
+      </div>
+      <div class="a11y-card">
+        <div class="a11y-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 3v14M3 10h14" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            <circle cx="10" cy="10" r="4" stroke="#1A6B7C" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="a11y-title">Offline-First Design</div>
+        <div class="a11y-desc">Default to minimum-bandwidth rendering. NYC flooding consistently degrades cellular infrastructure. Image loading is opt-in after connectivity is confirmed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DO / DON'T -->
+<section id="donts">
+  <div class="container">
+    <div class="section-label">06 — Do & Don't</div>
+    <h2 class="section-title">What FloodVoice Looks Like.<br>What It Never Does.</h2>
+    <p class="section-desc">The entire sector defaults to a narrow band of government blues, institutional authority signals, and clinical urgency cues. FloodVoice breaks from all of them.</p>
+
+    <div class="donts-grid">
+      <div class="do-col">
+        <div class="do-label">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1A6B7C" stroke-width="1.5"/><path d="M5 8l2.5 2.5L11 5.5" stroke="#1A6B7C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Do
+        </div>
+        <div class="do-item">
+          <strong>Deep Teal as primary</strong>
+          Water-adjacent without government blue. Trust-signaling and culturally cross-resonant across the communities FloodVoice serves.
+        </div>
+        <div class="do-item">
+          <strong>Amber-Gold for alerts</strong>
+          Heightened attention without triggering fear-response. Distinct from every alert convention in this space.
+        </div>
+        <div class="do-item">
+          <strong>Real community portraiture</strong>
+          Named residents, CBO workers, neighborhood landmarks — with names and neighborhoods always shown.
+        </div>
+        <div class="do-item">
+          <strong>Concentric rings as the mark</strong>
+          Water, community gathering, alert broadcast, and resilience — all in one unclaimed visual metaphor.
+        </div>
+        <div class="do-item">
+          <strong>Phase weight-shifting</strong>
+          Same palette across all three phases — only the dominant color shifts. Brand recognition stays consistent through the crisis.
+        </div>
+      </div>
+      <div class="dont-col">
+        <div class="dont-label">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#B04040" stroke-width="1.5"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="#B04040" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Never
+        </div>
+        <div class="dont-item">
+          <strong>Government blue (#103FEF) or emergency red</strong>
+          Every government tool uses blue. Every emergency tool uses red. Both signal "not built for us" to communities with historical distrust of institutions.
+        </div>
+        <div class="dont-item">
+          <strong>Shield emblems or warning triangles</strong>
+          Shield iconography carries law-enforcement connotations for immigrant communities. Triangles and exclamation marks are invisible from overuse.
+        </div>
+        <div class="dont-item">
+          <strong>Stock photography of "diverse families with emergency kits"</strong>
+          Instantly recognizable as non-authentic. Appears across FEMA, Ready.gov, and virtually every civic tech marketing site.
+        </div>
+        <div class="dont-item">
+          <strong>Alert-first UI hierarchy</strong>
+          Leading with emergency warnings trains users to associate the platform with stress rather than preparedness and community strength.
+        </div>
+        <div class="dont-item">
+          <strong>Pure white or pure black</strong>
+          Pure white reads as clinical. Pure black reads as authoritarian. Neither belongs in a brand built on warmth and belonging.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-text">FloodVoice Design System v1.0 &nbsp;·&nbsp; <span>Built for Red Hook, Rockaway, and every neighborhood in between</span></p>
+</footer>
+
+</body>
+</html>
